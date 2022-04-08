@@ -69,7 +69,7 @@ void loading()
 		printf("\n");
 	}
 	//Nested Loop for printing Loading...
-	for (int loop = 0; loop < 3; ++loop)
+	for (int loop = 0; loop < 2; ++loop)
 	{
 		for (int x = 0; x < 4; ++x)
 		{gotoxy(16,10);
