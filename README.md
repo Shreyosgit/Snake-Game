@@ -190,7 +190,11 @@ void logic()
 	{
 		gameover = 1;
 		gotoxy(16,10);
-		printf("Game Over!");
+		if (gameover == 1)
+		{
+			gotoxy(40, 20);
+			printf("\nHighscore %d", score);
+		}
 	}
 }
 
