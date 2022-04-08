@@ -10,10 +10,12 @@ Hello! everyone this is my first project on building a Snake Game in command pro
 #include <time.h>
 
 int i, j;
+// Snake Position
 int x, y;
 
 // Fruit Position
 int fruitx, fruity;
+
 int score, gameover, flag;
 int height, width;
 
