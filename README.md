@@ -1,5 +1,7 @@
 # Snake-Game
 Snake Game in command prompt using C
+
+```c
 // Making the Snake Game
 #include <stdio.h>
 #include <stdlib.h>
@@ -158,3 +160,4 @@ int main()
 		logic();
 	}
 }
+```
