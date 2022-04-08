@@ -8,12 +8,15 @@ Hello! everyone this is my first project on building a Snake Game in command pro
 #include <conio.h>
 #include <unistd.h>
 #include <time.h>
+
 int i, j;
 int x, y;
+
 // Fruit Position
 int fruitx, fruity;
 int score, gameover, flag;
 int height, width;
+
 // setup the snake game
 void setup()
 { //Intialise the Snake
@@ -36,6 +39,7 @@ label2:
 		goto label2;
 	}
 }
+
 // Draw() funtion definiton
 void draw()
 {
@@ -74,8 +78,8 @@ void draw()
 		printf("\n");
 	}
 }
-// input() function definition
 
+// input() function definition
 void input()
 { //Using Kbhit() to identify the input and getch() to get the input
 	if (kbhit())
@@ -100,6 +104,7 @@ void input()
 		}
 	}
 }
+
 // logic() function definition
 void logic()
 {
@@ -148,6 +153,7 @@ void logic()
 		printf("   Highscore %d ", score);
 	}
 }
+
 //function declaration
 int main()
 { // Generate Boundary
