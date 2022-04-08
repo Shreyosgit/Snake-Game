@@ -189,8 +189,8 @@ void logic()
 	else if (x < 1 || x > width - 1 || y < 1 || y > height)
 	{
 		gameover = 1;
-		printf("Game Over!\n");
-		printf("   Highscore %d ", score);
+		gotoxy(16,10);
+		printf("Game Over!");
 	}
 }
 
