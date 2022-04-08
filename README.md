@@ -1,5 +1,5 @@
 # Snake-Game
-Snake Game in command prompt using C
+Hello! everyone this is my first project on building a Snake Game in command prompt using C
 
 ```c
 // Making the Snake Game
