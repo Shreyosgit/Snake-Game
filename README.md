@@ -1,2 +1,160 @@
 # Snake-Game
 Snake Game in command prompt using C
+// Making the Snake Game
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <unistd.h>
+#include <time.h>
+int i, j;
+int x, y;
+// Fruit Position
+int fruitx, fruity;
+int score, gameover, flag;
+int height, width;
+// setup the snake game
+void setup()
+{ //Intialise the Snake
+	height = 20, width = 40;
+	x = width / 2, y = height / 2;
+	score = 0;
+	srand(time(0));
+// Initialising fruitx position using rand() function
+label1:
+	fruitx = rand() % 40;
+	if (fruitx == 0)
+	{
+		goto label1;
+	}
+// Initialising fruity position using rand() function
+label2:
+	fruity = rand() % 20;
+	if (fruity == 0)
+	{
+		goto label2;
+	}
+}
+// Draw() funtion definiton
+void draw()
+{
+	system("cls");
+
+	//Nested loop for printing the Boundary
+	for (j = 0; j < height; j++)
+	{
+		for (i = 0; i < width; i++)
+		{
+			if (j == 0 || j == height - 1)
+			{
+				printf("_");
+			}
+			else if (i == 0 || i == width - 1)
+			{
+				printf("|");
+			}
+			// Printing snake
+			else
+			{
+				if (i == x && j == y)
+				{
+					printf("o");
+				}
+				else if (i == fruitx && j == fruity)
+				{
+					printf("*");
+				}
+				else
+				{
+					printf(" ");
+				}
+			}
+		}
+		printf("\n");
+	}
+}
+// input() function definition
+
+void input()
+{ //Using Kbhit() to identify the input and getch() to get the input
+	if (kbhit())
+	{
+		switch (getch())
+		{
+		case 'a':
+			flag = 1;
+			break;
+		case 's':
+			flag = 2;
+			break;
+		case 'd':
+			flag = 3;
+			break;
+		case 'w':
+			flag = 4;
+			break;
+		case 'x':
+			flag = 5;
+			break;
+		}
+	}
+}
+// logic() function definition
+void logic()
+{
+	usleep(90000);
+	switch (flag)
+	{
+	case 1:
+		x--;
+		break;
+	case 2:
+		y++;
+		break;
+	case 3:
+		x++;
+		break;
+	case 4:
+		y--;
+		break;
+	case 5:
+		break;
+	}
+	// After Eating a fruit
+	if (x == fruitx && y == fruity)
+	{
+		score += 10;
+		printf("Score %d", score);
+
+		//generate a new fruit
+	label3:
+		fruitx = rand() % 40;
+		if (fruitx == 0)
+		{
+			goto label3;
+		}
+	label4:
+		fruity = rand() % 20;
+		if (fruity == 0)
+		{
+			goto label4;
+		}
+	}
+	else if (x < 1 || x > width - 1 || y < 1 || y > height)
+	{
+		gameover = 1;
+		printf("Game Over!\n");
+		printf("   Highscore %d ", score);
+	}
+}
+//function declaration
+int main()
+{ // Generate Boundary
+	setup();
+	// Untill the game is over
+	while (!gameover)
+	{
+		draw();
+		input();
+		logic();
+	}
+}
