@@ -43,6 +43,43 @@ label2:
 	}
 }
 
+//Loading function for printing loading Screen
+void loading()
+{
+	int i, j, width, height;
+	height = 20, width = 40;
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			if (i == 0 || i == height - 1)
+			{
+				printf("_");
+			}
+			else if (j == 0 || j == width - 1)
+			{
+				printf("|");
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+	//Nested Loop for printing Loading...
+	for (int loop = 0; loop < 3; ++loop)
+	{
+		for (int x = 0; x < 4; ++x)
+		{gotoxy(16,10);
+			printf("Loading%.*s   \b\b\b", x, "...");
+			fflush(stdout); //force printing as no newline in output
+			usleep(700000);
+		}
+	}
+}
+
 // Draw() funtion definiton
 void draw()
 {
@@ -159,8 +196,8 @@ void logic()
 
 //function declaration
 int main()
-{ // Generate Boundary
-	setup();
+{         setup(); //Generate Boundary
+	loading(); //Prints loading screen
 	// Untill the game is over
 	while (!gameover)
 	{
