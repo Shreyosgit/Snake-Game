@@ -186,7 +186,7 @@ void logic()
 			goto label4;
 		}
 	}
-	else if (x < 1 || x > width - 1 || y < 1 || y > height)
+	else if (x < 1 || x > width - 1 || y < 1 || y > height - 1)
 	{
 		gameover = 1;
 		gotoxy(16,10);
