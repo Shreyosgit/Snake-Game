@@ -29,14 +29,14 @@ void setup()
 	srand(time(0));
 // Initialising fruitx position using rand() function
 label1:
-	fruitx = rand() % 40;
+	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
 	if (fruitx == 0)
 	{
 		goto label1;
 	}
 // Initialising fruity position using rand() function
 label2:
-	fruity = rand() % 20;
+	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
 	if (fruity == 0)
 	{
 		goto label2;
@@ -174,13 +174,13 @@ void logic()
 
 		//generate a new fruit
 	label3:
-		fruitx = rand() % 40;
+		fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
 		if (fruitx == 0)
 		{
 			goto label3;
 		}
 	label4:
-		fruity = rand() % 20;
+		fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
 		if (fruity == 0)
 		{
 			goto label4;
