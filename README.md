@@ -38,14 +38,14 @@ void setup()
 // Initialising fruitx position using rand() function
 label1:
 	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruitx == 0)
+	if (fruitx == 0 || fruitx == snakenodeX[L])
 	{
 		goto label1;
 	}
 // Initialising fruity position using rand() function
 label2:
 	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruity == 0)
+	if (fruity == 0 || fruity == snakenodeY[L])
 	{
 		goto label2;
 	}
@@ -209,13 +209,13 @@ void logic()
 		//generate a new fruit
 	label3:
 		fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-		if (fruitx == 0)
+		if (fruitx == 0 || fruitx == snakenodeX[L])
 		{
 			goto label3;
 		}
 	label4:
 		fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-		if (fruity == 0)
+		if (fruity == 0 || fruity == snakenodeY[L])
 		{
 			goto label4;
 		}
