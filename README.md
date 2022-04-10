@@ -14,6 +14,13 @@ int i, j;
 // Snake Position
 int x, y;
 
+// Snake Node Coordinates
+int snakenodeX[650], snakenodeY[650];
+
+// Snake Length
+int snakelength;
+int k, L, P;
+
 // Fruit Position
 int fruitx, fruity;
 
@@ -25,6 +32,7 @@ void setup()
 { //Intialise the Snake
 	height = 20, width = 40;
 	x = width / 2, y = height / 2;
+	snakelength = 0;
 	score = 0;
 	srand(time(0));
 // Initialising fruitx position using rand() function
@@ -46,8 +54,7 @@ label2:
 //Loading function for printing loading Screen
 void loading()
 {
-	int i, j, width, height;
-	height = 20, width = 40;
+	int i, j;
 
 	for (i = 0; i < height; i++)
 	{
@@ -72,7 +79,8 @@ void loading()
 	for (int loop = 0; loop < 2; ++loop)
 	{
 		for (int x = 0; x < 4; ++x)
-		{gotoxy(16,10);
+		{
+			gotoxy(16, 10);
 			printf("Loading%.*s   \b\b\b", x, "...");
 			fflush(stdout); //force printing as no newline in output
 			usleep(700000);
@@ -103,7 +111,7 @@ void draw()
 			{
 				if (i == x && j == y)
 				{
-					printf("o");
+					printf("O");
 				}
 				else if (i == fruitx && j == fruity)
 				{
@@ -111,7 +119,17 @@ void draw()
 				}
 				else
 				{
-					printf(" ");
+					int ch = 0;
+					for (int P = 0; P < snakelength; P++)
+					{
+						if (i == snakenodeX[P] && j == snakenodeY[P])
+						{
+							printf("+");
+							ch = 1;
+						}
+					}
+					if (ch == 0)
+						printf(" ");
 				}
 			}
 		}
@@ -148,6 +166,21 @@ void input()
 // logic() function definition
 void logic()
 {
+	int prevX = snakenodeX[0]; // storing the first node coordinate of snakelengthX & Y array to prevX & Y
+	int prevY = snakenodeY[0];
+	snakenodeX[0] = x;
+	snakenodeY[0] = y;
+
+	for (L = 1; L < snakelength; L++)
+	{
+		int prev2X = snakenodeX[L];
+		int prev2Y = snakenodeY[L];
+		snakenodeX[L] = prevX;
+		snakenodeY[L] = prevY;
+		prevX = prev2X;
+		prevY = prev2Y;
+	}
+
 	usleep(90000);
 	switch (flag)
 	{
@@ -171,6 +204,7 @@ void logic()
 	{
 		score += 10;
 		printf("Score %d", score);
+		snakelength++;
 
 		//generate a new fruit
 	label3:
@@ -186,22 +220,47 @@ void logic()
 			goto label4;
 		}
 	}
-	else if (x < 1 || x > width - 1 || y < 1 || y > height - 1)
+	for (L = 0; L < snakelength; L++)
 	{
-		gameover = 1;
-		gotoxy(16,10);
-		printf("Game Over!");
-		if (gameover == 1)
+		if (x == snakenodeX[L] && y == snakenodeY[L])
 		{
-			gotoxy(40, 20);
-			printf("\nHighscore %d", score);
+			gameover = 1;
 		}
+	}
+
+	if (gameover == 1)
+	{
+		gotoxy(16, 10);
+		printf("Game Over!");
+	}
+	if (gameover == 1)
+	{
+		gotoxy(40, 20);
+		printf("\nScore %d", score);
+	}
+	//wall teleportation Syntax
+	if (x < 1)
+	{
+		x = width - 1;
+	}
+	if (x > width - 1)
+	{
+		x = 1;
+	}
+	else if (y < 1)
+	{
+		y = height - 1;
+	}
+	else if (y > height - 1)
+	{
+		y = 1;
 	}
 }
 
 //function declaration
 int main()
-{         setup(); //Generate Boundary
+{
+	setup();   //Generate Boundary
 	loading(); //Prints loading screen
 	// Untill the game is over
 	while (!gameover)
