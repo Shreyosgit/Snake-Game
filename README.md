@@ -15,7 +15,7 @@ int i, j;
 int x, y;
 
 // Snake Node Coordinates
-int snakenodeX[650], snakenodeY[650];
+int snakenodeX[1000], snakenodeY[1000];
 
 // Snake Length
 int snakelength;
