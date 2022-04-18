@@ -166,6 +166,18 @@ void input()
 // logic() function definition
 void logic()
 {
+	int delay;
+	//when score is 0 delay will be 90000 microseconds
+	if (score == 0)
+	{
+		delay = 90000;
+	} //when score is >0 delay will be decreased
+	else if (score != 0)
+	{
+		delay = 90000 - score * 10;
+	}
+
+	usleep(delay);
 	int prevX = snakenodeX[0]; // storing the first node coordinate of snakelengthX & Y array to prevX & Y
 	int prevY = snakenodeY[0];
 	snakenodeX[0] = x;
@@ -180,8 +192,6 @@ void logic()
 		prevX = prev2X;
 		prevY = prev2Y;
 	}
-
-	usleep(90000);
 	switch (flag)
 	{
 	case 1:
