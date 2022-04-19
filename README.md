@@ -2,7 +2,7 @@
 Hello! everyone this is my first project on building a Snake Game in command prompt using C
 
 ```c
-// Making the Snake Game
+//Making the Snake Game
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -30,7 +30,7 @@ int height, width;
 // setup the snake game
 void setup()
 { //Intialise the Snake
-	height = 20, width = 40;
+	height = 20, width = 56;
 	x = width / 2, y = height / 2;
 	snakelength = 0;
 	score = 0;
@@ -54,8 +54,9 @@ label2:
 //Loading function for printing loading Screen
 void loading()
 {
-	int i, j;
+	char play;
 
+	//printing the boundary
 	for (i = 0; i < height; i++)
 	{
 		for (j = 0; j < width; j++)
@@ -75,15 +76,53 @@ void loading()
 		}
 		printf("\n");
 	}
+
+	//Printing ASCII art
+	gotoxy(3, 8);
+	printf(" _____            _          _____\n");
+	gotoxy(3, 9);
+	printf("|   __| ___  ___ | |_  ___  |   __| ___  _____  ___ \n");
+	gotoxy(3, 10);
+	printf("|__   ||   || .'|| '_|| -_| |  |  || .'||     || -_|\n");
+	gotoxy(3, 11);
+	printf("|_____||_|_||__,||_,_||___| |_____||__,||_|_|_||___|\n");
+
+	gotoxy(56, 20);
+	printf("\nPress P to Continue!");
+	scanf(" %c", &play);
+
 	//Nested Loop for printing Loading...
-	for (int loop = 0; loop < 2; ++loop)
+	if (play == 'p' || play == 'P')
 	{
-		for (int x = 0; x < 4; ++x)
+		system("cls");
+		for (i = 0; i < height; i++)
 		{
-			gotoxy(16, 10);
-			printf("Loading%.*s   \b\b\b", x, "...");
-			fflush(stdout); //force printing as no newline in output
-			usleep(700000);
+			for (j = 0; j < width; j++)
+			{
+				if (i == 0 || i == height - 1)
+				{
+					printf("_");
+				}
+				else if (j == 0 || j == width - 1)
+				{
+					printf("|");
+				}
+				else
+				{
+					printf(" ");
+				}
+			}
+			printf("\n");
+		}
+		for (int loop = 0; loop < 2; ++loop)
+		{
+			for (int x = 0; x < 4; ++x)
+			{
+				gotoxy(24, 10);
+				printf("Loading%.*s   \b\b\b", x, "...");
+				fflush(stdout); //force printing as no newline in output
+				usleep(700000);
+			}
 		}
 	}
 }
@@ -178,6 +217,7 @@ void logic()
 	}
 
 	usleep(delay);
+
 	int prevX = snakenodeX[0]; // storing the first node coordinate of snakelengthX & Y array to prevX & Y
 	int prevY = snakenodeY[0];
 	snakenodeX[0] = x;
@@ -239,13 +279,19 @@ void logic()
 	}
 
 	if (gameover == 1)
-	{
-		gotoxy(16, 10);
-		printf("Game Over!");
+	{ //Game Over ASCII art
+		gotoxy(8, 8);
+		printf(" _____                  _____\n");
+		gotoxy(8, 9);
+		printf("|   __|___ _____ ___   |     |_ _ ___ ___\n");
+		gotoxy(8, 10);
+		printf("|  |  | .'|     | -_|  |  |  | | | -_|  _|\n");
+		gotoxy(8, 11);
+		printf("|_____|__,|_|_|_|___|  |_____|\_/|___|_|");
 	}
 	if (gameover == 1)
 	{
-		gotoxy(40, 20);
+		gotoxy(56, 20);
 		printf("\nScore %d", score);
 	}
 	//wall teleportation Syntax
