@@ -2,7 +2,7 @@
 Hello! everyone this is my first project on building a Snake Game in command prompt using C
 
 ```c
-//Making the Snake Game
+// Making the Snake Game
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -78,14 +78,16 @@ void loading()
 	}
 
 	//Printing ASCII art
-	gotoxy(3, 8);
-	printf(" _____            _          _____\n");
-	gotoxy(3, 9);
-	printf("|   __| ___  ___ | |_  ___  |   __| ___  _____  ___ \n");
-	gotoxy(3, 10);
-	printf("|__   ||   || .'|| '_|| -_| |  |  || .'||     || -_|\n");
-	gotoxy(3, 11);
-	printf("|_____||_|_||__,||_,_||___| |_____||__,||_|_|_||___|\n");
+	gotoxy(4, 8);
+	printf(" _____            _          _____   \n");
+	gotoxy(4, 9);
+	printf("|   __| ___  ___ | |_  ___  |   __| ___  ___  ___ \n");
+	gotoxy(4, 10);
+	printf("|__   || .'||   || '_|| -_| |__   || .'|| . || .'|\n");
+	gotoxy(4, 11);
+	printf("|_____||__,||_|_||_,_||___| |_____||__,||_  ||__,|\n");
+	gotoxy(4, 12);
+	printf("                                        |___|     \n");
 
 	gotoxy(56, 20);
 	printf("\nPress P to Continue!");
