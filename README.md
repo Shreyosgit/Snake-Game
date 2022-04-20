@@ -51,7 +51,7 @@ label2:
 	}
 }
 
-//Loading function for printing loading Screen
+//Loading function for printing ASCII art and loading Screen
 void loading()
 {
 	char play;
