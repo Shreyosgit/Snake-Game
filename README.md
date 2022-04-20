@@ -93,7 +93,7 @@ void loading()
 	printf("\nPress P to Continue!");
 	scanf(" %c", &play);
 
-	//Nested Loop for printing Loading...
+	//Nested Loop for printing the Boundary and Loading...
 	if (play == 'p' || play == 'P')
 	{
 		system("cls");
