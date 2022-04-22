@@ -185,17 +185,32 @@ void input()
 	{
 		switch (getch())
 		{
+		case 'A':
+			flag = 1;
+			break;
 		case 'a':
 			flag = 1;
+			break;
+		case 'S':
+			flag = 2;
 			break;
 		case 's':
 			flag = 2;
 			break;
+		case 'D':
+			flag = 3;
+			break;
 		case 'd':
 			flag = 3;
 			break;
+		case 'W':
+			flag = 4;
+			break;
 		case 'w':
 			flag = 4;
+			break;
+		case 'X':
+			flag = 5;
 			break;
 		case 'x':
 			flag = 5;
