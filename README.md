@@ -29,7 +29,8 @@ int height, width;
 
 // setup the snake game
 void setup()
-{//Intialise the Snake
+{
+	//Intialise the Snake
 	height = 20, width = 56;
 	x = width / 2, y = height / 2;
 	snakelength = 0;
@@ -38,22 +39,16 @@ void setup()
 // Initialising fruitx position using rand() function
 label1:
 	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	for (L = 0; L < snakelength; L++)
+	if (fruitx == 0 || fruitx == x)
 	{
-		if (fruitx == 0 || fruitx == snakenodeX[L])
-		{
-			goto label1;
-		}
+		goto label1;
 	}
 // Initialising fruity position using rand() function
 label2:
 	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	for (L = 0; L < snakelength; L++)
+	if (fruity == 0 || fruity == y)
 	{
-		if (fruity == 0 || fruity == snakenodeY[L])
-		{
-			goto label2;
-		}
+		goto label2;
 	}
 }
 
@@ -61,7 +56,7 @@ label2:
 void loading()
 {
 	char play;
-
+    Start:
 	//printing the boundary
 	for (i = 0; i < height; i++)
 	{
@@ -132,6 +127,11 @@ void loading()
 				usleep(700000);
 			}
 		}
+	}
+	else
+	{   gotoxy(56,21);
+		printf("\nInvalid Input!\n");
+		goto Start;
 	}
 }
 
