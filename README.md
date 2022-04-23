@@ -29,7 +29,8 @@ int height, width;
 
 // setup the snake game
 void setup()
-{ //Intialise the Snake
+{
+	//Intialise the Snake
 	height = 20, width = 56;
 	x = width / 2, y = height / 2;
 	snakelength = 0;
@@ -38,16 +39,22 @@ void setup()
 // Initialising fruitx position using rand() function
 label1:
 	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruitx == 0 || fruitx == snakenodeX[L])
+	for (L = 0; L < snakelength; L++)
 	{
-		goto label1;
+		if (fruitx == 0 || fruitx == snakenodeX[L])
+		{
+			goto label1;
+		}
 	}
 // Initialising fruity position using rand() function
 label2:
 	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruity == 0 || fruity == snakenodeY[L])
+	for (L = 0; L < snakelength; L++)
 	{
-		goto label2;
+		if (fruity == 0 || fruity == snakenodeY[L])
+		{
+			goto label2;
+		}
 	}
 }
 
@@ -90,11 +97,11 @@ void loading()
 	printf("                                        |___|     \n");
 
 	gotoxy(56, 20);
-	printf("\nPress P to Continue!");
+	printf("\nPress X to Continue!");
 	scanf(" %c", &play);
 
 	//Nested Loop for printing the Boundary and Loading...
-	if (play == 'p' || play == 'P')
+	if (play == 'x' || play == 'X')
 	{
 		system("cls");
 		for (i = 0; i < height; i++)
@@ -161,7 +168,7 @@ void draw()
 				else
 				{
 					int ch = 0;
-					for (int P = 0; P < snakelength; P++)
+					for (P = 0; P < snakelength; P++)
 					{
 						if (i == snakenodeX[P] && j == snakenodeY[P])
 						{
@@ -212,7 +219,7 @@ void input()
 		case 'X':
 			flag = 5;
 			break;
-		case 'x':
+		case 'p':
 			flag = 5;
 			break;
 		}
@@ -227,7 +234,8 @@ void logic()
 	if (score == 0)
 	{
 		delay = 90000;
-	} //when score is >0 delay will be decreased
+	}
+	//when score is >0 delay will be decreased
 	else if (score != 0)
 	{
 		delay = 90000 - score * 10;
@@ -276,15 +284,21 @@ void logic()
 		//generate a new fruit
 	label3:
 		fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-		if (fruitx == 0 || fruitx == snakenodeX[L])
+		for (L = 0; L < snakelength; L++)
 		{
-			goto label3;
+			if (fruitx == 0 || fruitx == snakenodeX[L])
+			{
+				goto label3;
+			}
 		}
 	label4:
 		fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-		if (fruity == 0 || fruity == snakenodeY[L])
+		for (L = 0; L < snakelength; L++)
 		{
-			goto label4;
+			if (fruity == 0 || fruity == snakenodeY[L])
+			{
+				goto label4;
+			}
 		}
 	}
 	for (L = 0; L < snakelength; L++)
