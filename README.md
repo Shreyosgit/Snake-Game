@@ -29,8 +29,7 @@ int height, width;
 
 // setup the snake game
 void setup()
-{
-	//Intialise the Snake
+{//Intialise the Snake
 	height = 20, width = 56;
 	x = width / 2, y = height / 2;
 	snakelength = 0;
