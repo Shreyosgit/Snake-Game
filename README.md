@@ -27,7 +27,7 @@ int fruitx, fruity;
 int score, gameover, flag;
 int height, width;
 
-// setup the snake game
+// Setup the snake game
 void setup()
 {
 	//Intialise the Snake
@@ -129,7 +129,7 @@ void loading()
 		}
 	}
 	else
-	{   gotoxy(56,21);
+	{
 		printf("\nInvalid Input!\n");
 		goto Start;
 	}
