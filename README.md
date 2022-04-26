@@ -27,36 +27,11 @@ int fruitx, fruity;
 int score, gameover, flag;
 int height, width;
 
-// Setup the snake game
-void setup()
-{
-	//Intialise the Snake
-	height = 20, width = 56;
-	x = width / 2, y = height / 2;
-	snakelength = 0;
-	score = 0;
-	srand(time(0));
-// Initialising fruitx position using rand() function
-label1:
-	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruitx == 0 || fruitx == x)
-	{
-		goto label1;
-	}
-// Initialising fruity position using rand() function
-label2:
-	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
-	if (fruity == 0 || fruity == y)
-	{
-		goto label2;
-	}
-}
-
 //Loading function for printing ASCII art and loading Screen
 void loading()
 {
 	char play;
-    Start:
+Start:
 	//printing the boundary
 	for (i = 0; i < height; i++)
 	{
@@ -77,7 +52,6 @@ void loading()
 		}
 		printf("\n");
 	}
-
 	//Printing ASCII art
 	gotoxy(4, 8);
 	printf(" _____            _          _____                \n");
@@ -117,9 +91,9 @@ void loading()
 			}
 			printf("\n");
 		}
-		for (int loop = 0; loop < 2; ++loop)
+		for (int loop = 0; loop < 2; loop++)
 		{
-			for (int x = 0; x < 4; ++x)
+			for (int x = 0; x < 4; x++)
 			{
 				gotoxy(24, 10);
 				printf("Loading%.*s   \b\b\b", x, "...");
@@ -132,6 +106,31 @@ void loading()
 	{
 		printf("\nInvalid Input!\n");
 		goto Start;
+	}
+}
+
+// Setup the snake game
+void setup()
+{
+	//Intialise the Snake
+	height = 20, width = 56;
+	x = width / 2, y = height / 2;
+	snakelength = 0;
+	score = 0;
+	srand(time(0));
+// Initialising fruitx position using rand() function
+label1:
+	fruitx = rand() % ((width - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
+	if (fruitx == 0 || fruitx == x)
+	{
+		goto label1;
+	}
+// Initialising fruity position using rand() function
+label2:
+	fruity = rand() % ((height - 3) + 1); //rand() % (upperlimit-(lowerlimit+1)+lowerlimit)
+	if (fruity == 0 || fruity == y)
+	{
+		goto label2;
 	}
 }
 
@@ -346,8 +345,8 @@ void logic()
 //function declaration
 int main()
 {
-	setup();   //Generate Boundary
-	loading(); //Prints loading screen
+	loading();
+	setup();
 	// Untill the game is over
 	while (!gameover)
 	{
