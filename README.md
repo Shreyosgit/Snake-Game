@@ -217,7 +217,7 @@ void input()
 		case 'X':
 			flag = 5;
 			break;
-		case 'p':
+		case 'x':
 			flag = 5;
 			break;
 		}
